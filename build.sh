@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-yum install goaccess
-
 cat > ~/aws <<EOL
 [default]
 region = $ENV_DEFAULT_REGION

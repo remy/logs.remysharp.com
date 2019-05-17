@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Convert Cloudfront pixel logs from benhoyt.com to combined log format for GoAccess."""
 
 import collections
@@ -90,23 +90,23 @@ def process_input(finput):
             ip = fields['x-forwarded-for']
 
         # Output in Apache/nginx combined log format
-        # print('{ip} - - [{date:%d/%b/%Y}:{time} +0000] {request} 200 - '
-        #       '{referrer} {user_agent}'.format(
-        #     ip=ip,
-        #     date=date,
-        #     time=fields['time'],
-        #     request=quote('GET ' + path + ' HTTP/1.1'),
-        #     referrer=quote(referrer),
-        #     user_agent=quote(user_agent),
-        # ))
+        print('{ip} - - [{date:%d/%b/%Y}:{time} +0000] {request} 200 - '
+              '{referrer} {user_agent}'.format(
+            ip=ip,
+            date=date,
+            time=fields['time'],
+            request=quote('GET ' + path + ' HTTP/1.1'),
+            referrer=quote(referrer),
+            user_agent=quote(user_agent),
+        ))
         num_output += 1
 
-    # print('processed {lines} lines from {files} files (avg {avg:.2f} lines/file), output {output} lines'.format(
-    #     lines=num_lines,
-    #     files=num_files,
-    #     avg=num_lines / num_files,
-    #     output=num_output,
-    # ), file=sys.stderr)
+    print('processed {lines} lines from {files} files (avg {avg:.2f} lines/file), output {output} lines'.format(
+        lines=num_lines,
+        files=num_files,
+        avg=num_lines / num_files,
+        output=num_output,
+    ), file=sys.stderr)
 
 
 def quote(text):
@@ -127,7 +127,7 @@ def unquote(text):
 
 def log_error(finput, message):
     """Log error message to stderr (with finput filename and line number)."""
-    print('{}:{}: {}'.format(finput.filename(), finput.filelineno(), message))
+    print('{}:{}: {}'.format(finput.filename(), finput.filelineno(), message), file=sys.stderr)
 
 
 if __name__ == '__main__':

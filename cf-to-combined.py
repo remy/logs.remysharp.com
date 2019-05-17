@@ -90,15 +90,15 @@ def process_input(finput):
             ip = fields['x-forwarded-for']
 
         # Output in Apache/nginx combined log format
-        print('{ip} - - [{date:%d/%b/%Y}:{time} +0000] {request} 200 - '
-              '{referrer} {user_agent}'.format(
-            ip=ip,
-            date=date,
-            time=fields['time'],
-            request=quote('GET ' + path + ' HTTP/1.1'),
-            referrer=quote(referrer),
-            user_agent=quote(user_agent),
-        ))
+        # print('{ip} - - [{date:%d/%b/%Y}:{time} +0000] {request} 200 - '
+        #       '{referrer} {user_agent}'.format(
+        #     ip=ip,
+        #     date=date,
+        #     time=fields['time'],
+        #     request=quote('GET ' + path + ' HTTP/1.1'),
+        #     referrer=quote(referrer),
+        #     user_agent=quote(user_agent),
+        # ))
         num_output += 1
 
     # print('processed {lines} lines from {files} files (avg {avg:.2f} lines/file), output {output} lines'.format(
@@ -127,8 +127,7 @@ def unquote(text):
 
 def log_error(finput, message):
     """Log error message to stderr (with finput filename and line number)."""
-    print('{}:{}: {}'.format(finput.filename(), finput.filelineno(), message),
-          file=sys.stderr)
+    print('{}:{}: {}'.format(finput.filename(), finput.filelineno(), message))
 
 
 if __name__ == '__main__':

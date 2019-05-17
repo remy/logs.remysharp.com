@@ -43,7 +43,7 @@ def process_input(finput):
         if line.startswith('#'):
             parts = line[1:].split(':', 1)
             if len(parts) != 2:
-                log_error(finput, ': not found not # directive line')
+                # log_error(finput, ': not found not # directive line')
                 continue
             directive, value = parts
             value = value.strip()
@@ -51,22 +51,22 @@ def process_input(finput):
                 field_names = value.split()
             continue
         if field_names is None:
-            log_error(finput, '#Fields directive not found at start of file')
+            # log_error(finput, '#Fields directive not found at start of file')
             return False
 
         # Split into fields (it's tab-separated)
         num_lines += 1
         field_list = line.split('\t')
         if len(field_list) != len(field_names):
-            log_error(finput, 'number of fields ({}) != expected number ({})'.format(
-                len(field_list), len(field_names)))
+            # log_error(finput, 'number of fields ({}) != expected number ({})'.format(
+            #     len(field_list), len(field_names)))
             continue
         fields = dict(zip(field_names, line.split('\t')))
 
         # Ensure the fields we need are present
         missing_fields = [f for f in REQUIRED_FIELDS if f not in fields]
         if missing_fields:
-            log_error(finput, 'missing fields: {}'.format(', '.join(missing_fields)))
+            # log_error(finput, 'missing fields: {}'.format(', '.join(missing_fields)))
             continue
 
         # Ensure it's a "pixel.png" request with "u" query param
@@ -82,7 +82,7 @@ def process_input(finput):
         try:
             date = datetime.datetime.strptime(fields['date'], '%Y-%m-%d')
         except ValueError:
-            log_error(finput, 'invalid date: {}'.format(fields['date']))
+            # log_error(finput, 'invalid date: {}'.format(fields['date']))
             continue
         user_agent = unquote(fields['cs(User-Agent)'])
         ip = fields['c-ip']
@@ -101,12 +101,12 @@ def process_input(finput):
         ))
         num_output += 1
 
-    print('processed {lines} lines from {files} files (avg {avg:.2f} lines/file), output {output} lines'.format(
-        lines=num_lines,
-        files=num_files,
-        avg=num_lines / num_files,
-        output=num_output,
-    ), file=sys.stderr)
+    # print('processed {lines} lines from {files} files (avg {avg:.2f} lines/file), output {output} lines'.format(
+    #     lines=num_lines,
+    #     files=num_files,
+    #     avg=num_lines / num_files,
+    #     output=num_output,
+    # ), file=sys.stderr)
 
 
 def quote(text):

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-mkdir -p .aws/
-cat > ./.aws/credentials <<EOL
+mkdir -p ~/.aws/
+cat > ~/.aws/credentials <<EOL
 [home]
  region = ${ENV_REGION}
  aws_access_key_id = ${ENV_SECRET_ID}

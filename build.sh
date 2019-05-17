@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+mkdir ~/.aws
 cat > ~/.aws/credentials <<EOL
 [home]
 region = $ENV_DEFAULT_REGION

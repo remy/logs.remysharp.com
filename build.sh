@@ -9,8 +9,6 @@ aws_secret_access_key = $ENV_ACCESS_KEY_ID
 
 EOL
 
-cat ~/.aws/credentials
-
 # pip install awscli
 aws s3 sync s3://benhoyt-com-pixel-logs/ _logs/ --profile=home
 python ./cf-to-combined.py _logs/*.gz > _logs/combined.log

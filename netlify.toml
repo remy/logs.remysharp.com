@@ -6,8 +6,3 @@
 
   # Default build command.
   command = "sh ./build.sh"
-
-  [build.environment]
-    AWS_ACCESS_KEY_ID = "ENV_ACCESS_KEY_ID"
-    AWS_SECRET_ACCESS_KEY = "ENV_SECRET_ACCESS_KEY"
-    AWS_DEFAULT_REGION = "ENV_DEFAULT_REGION"

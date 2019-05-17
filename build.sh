@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/.aws/
-cat > ~/.aws/credentials <<EOL
+mkdir -p ./.aws/
+cat > ./.aws/credentials <<EOL
 [home]
-region = ${ENV_ACCESS_KEY_ID}
-aws_access_key_id = ${ENV_SECRET_ACCESS_KEY}
-aws_secret_access_key = ${ENV_DEFAULT_REGION}
+region = $ENV_DEFAULT_REGION
+aws_access_key_id = ENV_SECRET_ACCESS_KEY
+aws_secret_access_key = ENV_ACCESS_KEY_ID
 
 EOL
 
-cat ~./aws/credentials
+cat ./.aws/credentials
 
 pip install awscli
 aws s3 sync s3://benhoyt-com-pixel-logs/ _logs/ --profile=home

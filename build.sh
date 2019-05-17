@@ -2,7 +2,7 @@
 
 mkdir -p .aws/
 cat > ./aws/credentials <<EOL
-[default]
+[home]
  region = ${ENV_REGION}
  aws_access_key_id = ${ENV_SECRET_ID}
  aws_secret_access_key = ${ENV_ACCESS_KEY}

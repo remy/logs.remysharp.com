@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-apt-get install goaccess
+yum install goaccess
 
 cat > ~/aws <<EOL
 [default]

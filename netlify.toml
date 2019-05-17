@@ -5,7 +5,7 @@
   publish = "public"
 
   # Default build command.
-  command = "sh ./init.sh; sh ./build.sh"
+  command = "sh ./build.sh"
 
   [build.environment]
     AWS_ACCESS_KEY_ID = "ENV_ACCESS_KEY_ID"

@@ -101,12 +101,12 @@ def process_input(finput):
         ))
         num_output += 1
 
-    print('processed {lines} lines from {files} files (avg {avg:.2f} lines/file), output {output} lines'.format(
-        lines=num_lines,
-        files=num_files,
-        avg=num_lines / num_files,
-        output=num_output,
-    ), file=sys.stderr)
+    # print('processed {lines} lines from {files} files (avg {avg:.2f} lines/file), output {output} lines'.format(
+    #     lines=num_lines,
+    #     files=num_files,
+    #     avg=num_lines / num_files,
+    #     output=num_output,
+    # ), file=sys.stderr)
 
 
 def quote(text):

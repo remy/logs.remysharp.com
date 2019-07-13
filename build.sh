@@ -15,7 +15,8 @@ for i in $(seq 1 31); do
 done
 
 # pip install awscli
-echo $INCLUDE;
+echo AWS_SHARED_CREDENTIALS_FILE=./aws aws s3 sync s3://logging.leftlogic.com/ . --profile netlify --exclude "*" $INCLUDE
+
 AWS_SHARED_CREDENTIALS_FILE=./aws aws s3 sync s3://logging.leftlogic.com/ . --profile netlify --exclude "*" $INCLUDE
 
 

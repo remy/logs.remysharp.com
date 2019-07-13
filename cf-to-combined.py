@@ -79,6 +79,8 @@ def process_input(finput):
         # Decode "u" (URL) and "r" (referrer) in query string
         path = urllib.parse.unquote(query['u'][0])
         referrer = urllib.parse.unquote(query.get('r', ['-'])[0])
+        status = urllib.parse.unquote(query.get('s', ['200'])[0])
+        bytes = urllib.parse.unquote(query.get('b', ['-'])[0])
         try:
             date = datetime.datetime.strptime(fields['date'], '%Y-%m-%d')
         except ValueError:
@@ -90,7 +92,7 @@ def process_input(finput):
             ip = fields['x-forwarded-for']
 
         # Output in Apache/nginx combined log format
-        print('{ip} - - [{date:%d/%b/%Y}:{time} +0000] {request} 200 - '
+        print('{ip} - - [{date:%d/%b/%Y}:{time} +0000] {request} {status} {bytes} '
               '{referrer} {user_agent}'.format(
             ip=ip,
             date=date,
